@@ -183,8 +183,7 @@ def main():
                         """, unsafe_allow_html=True)
                     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
                 
-                    if url and check_word_in_url(url)==False:
-                        st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
+                    
                         
                     if check_word_in_url(url):
                         # st.session_state.title = title
@@ -211,6 +210,9 @@ def main():
                             # Menampilkan skripsi sederhana
                             st.subheader(st.session_state.title)
                             st.write(str(simple_thesis))
+
+                    if url and check_word_in_url(url)==False:
+                        st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                 
 if __name__ == "__main__":
     main()
