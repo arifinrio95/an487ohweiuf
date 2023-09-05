@@ -119,8 +119,8 @@ def main():
     special_topic = st.text_input("Masukkan Topik Khusus (Kosongkan untuk random topik)", value = " ")
     
 
-    button = st.button("Submit", key='btn_submit')
     if 'button_submit2' not in st.session_state:
+        button = st.button("Submit", key='btn_submit')
         if button:
             st.session_state.button_clicked = True
         
