@@ -116,7 +116,7 @@ def main():
     ml_model = st.selectbox("Pilih Jenis Model Machine Learning", ["Klasifikasi", "Regresi", "Clustering"])
     
     # User meng-input free text topik khusus
-    special_topic = st.text_input("Masukkan Topik Khusus")
+    special_topic = st.text_input("Masukkan Topik Khusus", value = " ")
     
 
     button = st.button("Submit", key='btn_submit')
