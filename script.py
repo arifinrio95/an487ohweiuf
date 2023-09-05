@@ -125,13 +125,13 @@ def main():
         
     if 'button_clicked' in st.session_state and ml_model and special_topic:
     # if button and ml_model and special_topic:
-        prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
+        prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
 
         if 'titles' in st.session_state:
             # Menampilkan setiap judul sebagai text yang bisa diklik   
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-            if 'special_topic' in st.session_state: 
-                if st.session_state.special_topic != special_topic:
+            if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
+                if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
                     with st.spinner('Generating title ideas...'):
                         titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                         st.session_state.titles = titles
@@ -244,7 +244,8 @@ def main():
                 """, unsafe_allow_html=True)
             
         
-        st.session_state.special_topic = special_topic    
+        st.session_state.special_topic = special_topic 
+        st.session_state.ml_model = ml_model 
         
                     
                     
