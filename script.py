@@ -141,6 +141,7 @@ def main():
                 #     st.session_state.button2_clicked = True
                     
                 if st.button(title):
+                    st.session_state.title = title
                     st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
                     st.markdown("""
                         <style>
@@ -186,7 +187,7 @@ def main():
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                         
                     if check_word_in_url(url):
-                        st.session_state.title = title
+                        # st.session_state.title = title
                         prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                                     dengan format:
                                     
@@ -208,7 +209,7 @@ def main():
                             simple_thesis = request_content(prompt_2)
                             
                             # Menampilkan skripsi sederhana
-                            st.subheader(title)
+                            st.subheader(st.session_state.title)
                             st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
