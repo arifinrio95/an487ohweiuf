@@ -171,7 +171,7 @@ def main():
                     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                     st.session_state.url = url
         
-        if ('title' in st.session_state):
+        if 'button2_clicked' in st.session_state:
             url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
             st.session_state.url = url
 
