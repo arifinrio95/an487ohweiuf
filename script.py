@@ -142,6 +142,12 @@ def main():
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
 
+        if 'titles' in st.session_state:
+            if st.session_state_title != title:
+                with st.spinner('Generating title ideas...'):
+                    titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
+                    st.session_state.titles = titles
+
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
                 # st.session_state.title = title
