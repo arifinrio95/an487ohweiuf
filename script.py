@@ -83,6 +83,7 @@ def main():
         titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
         
         # Menampilkan setiap judul sebagai text yang bisa diklik
+        st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
         for title in titles:
             if st.button(title):
                 prompt_2 = f"""Tuliskan skripsi dengan judul : {title}
