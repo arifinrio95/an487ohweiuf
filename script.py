@@ -181,6 +181,7 @@ def main():
                         # Menampilkan skripsi sederhana
                         st.subheader(st.session_state.title)
                         st.write(str(simple_thesis)) 
+                        st.experimental_rerun()
 
             if check_word_in_url(st.session_state.url)==False:
                 st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
