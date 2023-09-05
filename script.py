@@ -213,7 +213,7 @@ def main():
                                     """
                         st.session_state.prompt2 = prompt_2
                         
-                    if url and check_word_in_url(url)==False:
+                    if check_word_in_url(url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                 
             
