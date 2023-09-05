@@ -128,14 +128,7 @@ def main():
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
         # titles = simulated_chatGPT_request(prompt_1)
 
-        if 'title' in st.session_state and 'prompt2' in st.session_state:            
-            # Request ke API ChatGPT
-            with st.spinner('Generating content...'):
-                simple_thesis = request_content(st.session_state.prompt2)
-                
-                # Menampilkan skripsi sederhana
-                st.subheader(st.session_state.title)
-                st.write(str(simple_thesis))
+        
                     
         if 'titles' not in st.session_state:
             with st.spinner('Generating title ideas...'):
@@ -149,12 +142,14 @@ def main():
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             for title in st.session_state.titles:
                 # button2 = st.button(title, key=f'btn_submit_{title}')
-                # if button2:
-                #     st.session_state.button2_clicked = True
-
-                
-                if st.button(title):
+                if 'button2_clicked' not in st.session_state:
+                    st.button(title, key=f'btn_submit_{title}')
+                    st.session_state.button2_clicked = True
                     st.session_state.title = title
+
+                # if st.button(title):
+                if 'button2_clicked' in st.session_state:
+                    # st.session_state.title = title
                     st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
                     st.markdown("""
                         <style>
@@ -215,10 +210,17 @@ def main():
                                     """
                         st.session_state.prompt2 = prompt_2
                         
-                    if check_word_in_url(url)==False:
+                    if check_word_in_url(st.session_state.url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                 
-            
+            if 'title' in st.session_state and 'prompt2' in st.session_state:            
+                # Request ke API ChatGPT
+                with st.spinner('Generating content...'):
+                    simple_thesis = request_content(st.session_state.prompt2)
+                    
+                    # Menampilkan skripsi sederhana
+                    st.subheader(st.session_state.title)
+                    st.write(str(simple_thesis)) 
         
                 
 if __name__ == "__main__":
