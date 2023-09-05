@@ -25,7 +25,8 @@ def request_title(prompt,
     }]
 
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        # model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=messages,
         max_tokens=3000,
         temperature=0)
@@ -45,7 +46,8 @@ def request_content(prompt):
     }]
 
     response = openai.ChatCompletion.create(
-        model="gpt-4",
+        # model="gpt-4",
+        model="gpt-3.5-turbo",
         messages=messages,
         max_tokens=3000,
         temperature=0)
@@ -61,7 +63,7 @@ def request_content(prompt):
 
 # Streamlit app
 def main():
-    st.title("Generator Ide Judul Skripsi Machine Learning")
+    st.title("Generator Skripsi Machine Learning by Datasans")
     
     # User memilih satu jenis model machine learning
     ml_model = st.selectbox("Pilih Jenis Model Machine Learning", ["Klasifikasi", "Regresi", "Clustering"])
