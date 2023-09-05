@@ -275,10 +275,10 @@ def main():
                 st.session_state.url = url
             
         # if st.button(title):
-        if 'button2_clicked' in st.session_state:
-            if 'url' not in st.session_state:
-                url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                st.session_state.url = url
+        # if 'button2_clicked' in st.session_state:
+        #     if 'url' not in st.session_state:
+        #         url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+        #         st.session_state.url = url
                 # if st.button("Submit"):
                 #     st.experimental_rerun()
                 
