@@ -245,7 +245,7 @@ def main():
                 #                 Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                 #                 """
                 #     st.session_state.prompt2 = prompt_2
-                if 'title' in st.session_state and 'prompt2' in st.session_state:
+                if 'title' in st.session_state:
                     prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                                 dengan format:
                                 
