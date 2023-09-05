@@ -114,6 +114,7 @@ def main():
                 # Menampilkan skripsi sederhana
                 st.subheader(title)
                 st.write(str(simple_thesis))
+                st.session_state.button_clicked = False
                 
 if __name__ == "__main__":
     main()
