@@ -130,24 +130,24 @@ def main():
         if 'titles' in st.session_state:
             # Menampilkan setiap judul sebagai text yang bisa diklik   
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-            
-            if st.session_state.special_topic != special_topic:
-                with st.spinner('Generating title ideas...'):
-                    titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
-                    st.session_state.titles = titles
+            if 'special_topic' in st.session_state: 
+                if st.session_state.special_topic != special_topic:
+                    with st.spinner('Generating title ideas...'):
+                        titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
+                        st.session_state.titles = titles
+                        for title in st.session_state.titles:
+                            button2 = st.button(title, key=f'btn_submit_{title}')
+                            if button2:
+                                st.button(title, key=f'btn_submit_{title}')
+                                st.session_state.button2_clicked = True
+                                st.session_state.title = title
+                else:
                     for title in st.session_state.titles:
                         button2 = st.button(title, key=f'btn_submit_{title}')
                         if button2:
                             st.button(title, key=f'btn_submit_{title}')
                             st.session_state.button2_clicked = True
                             st.session_state.title = title
-            else:
-                for title in st.session_state.titles:
-                    button2 = st.button(title, key=f'btn_submit_{title}')
-                    if button2:
-                        st.button(title, key=f'btn_submit_{title}')
-                        st.session_state.button2_clicked = True
-                        st.session_state.title = title
                     
         if 'titles' not in st.session_state:
             with st.spinner('Generating title ideas...'):
