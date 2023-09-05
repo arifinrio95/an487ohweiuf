@@ -136,7 +136,7 @@ def main():
         if 'titles' in st.session_state:
             # Menampilkan setiap judul sebagai text yang bisa diklik
             if 'title' in st.session_state and 'prompt2' in st.session_state:            
-                # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
+                # Request ke API ChatGPT
                 with st.spinner('Generating content...'):
                     simple_thesis = request_content(st.session_state.prompt2)
                     
@@ -193,8 +193,8 @@ def main():
                         </div>
                         """, unsafe_allow_html=True)
                     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
-                
-                    if check_word_in_url(url):
+                    st.session_state.url = url
+                    if check_word_in_url(st.session_state.url ) == True:
                         # st.session_state.title = title
                         prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                                     dengan format:
