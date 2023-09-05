@@ -4,6 +4,9 @@ import openai
 import re
 
 openai.api_key = st.secrets['api_key']
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'
+}
 
 def check_word_in_url(url, word="Berhasil"):
     try:
