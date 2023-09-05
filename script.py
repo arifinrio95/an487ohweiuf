@@ -5,6 +5,43 @@ import re
 
 openai.api_key = st.secrets['api_key']
 
+def check_word_in_url(url, word="Berhasil"):
+    try:
+        if url == st.secrets['founder_pass']:
+            return True
+            
+        response = requests.get(url, headers = headers)
+        response.raise_for_status()
+
+        # Pengecekan kata "Berhasil"
+        if word not in response.text:
+            return False
+
+        if "DatasansBook" not in response.text:
+            return False
+            
+        # Pengecekan tanggal hari ini
+        today_date = datetime.today().strftime('%d-%m-%Y')
+        if today_date not in response.text:
+            return False
+        
+        # Pengecekan waktu saat ini sampai 1 jam ke belakang dalam format 12 jam
+        current_time = datetime.now()
+        one_hour_before = current_time - timedelta(hours=1)
+        time_range = [one_hour_before + timedelta(minutes=i) for i in range(61)]
+        formatted_times = [time.strftime('%I:%M') for time in time_range]
+
+        # Jika tidak ada waktu yang cocok dalam konten, kembalikan False
+        if not any(time in response.text for time in formatted_times):
+            return False
+            
+        return True
+
+    except requests.RequestException as e:
+        st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses.")
+        return False
+        
+
 def local_css(file_name):
     with open(file_name) as f:
         st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
@@ -101,31 +138,75 @@ def main():
                 #     st.session_state.button2_clicked = True
                     
                 if st.button(title):
-                # if 'button2_clicked' in st.session_state:
-                    st.session_state.title = title
-                    prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
-                                dengan format:
-                                
-                                Bab I: Pendahuluan
-                                
-                                Bab II: Tinjauan Pustaka dan Kerangka Teori
-                                
-                                Bab III: Metodologi Penelitian
-                                
-                                Bab IV: Modeling dan Pembahasan
-                                
-                                Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
-                                Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
-                                Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
-                                """
-                    
-                    # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
-                    with st.spinner('Generating content...'):
-                        simple_thesis = request_content(prompt_2)
+                    st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
+                    st.markdown("""
+                        <style>
+                        .tooltip {
+                          position: relative;
+                          display: inline-block;
+                          cursor: pointer;
+                          background-color: #f2f2f2; /* Warna abu-abu */
+                          padding: 5px;
+                          border-radius: 6px;
+                        }
                         
-                        # Menampilkan skripsi sederhana
-                        st.subheader(title)
-                        st.write(str(simple_thesis))
+                        .tooltip .tooltiptext {
+                          visibility: hidden;
+                          width: 300px;
+                          background-color: #555;
+                          color: #fff;
+                          text-align: center;
+                          border-radius: 6px;
+                          padding: 5px;
+                          position: absolute;
+                          z-index: 1;
+                          bottom: 125%; 
+                          left: 50%;
+                          margin-left: -150px;
+                          opacity: 0;
+                          transition: opacity 0.3s;
+                        }
+                        
+                        .tooltip:hover .tooltiptext {
+                          visibility: visible;
+                          opacity: 1;
+                        }
+                        </style>
+                        
+                        <div class="tooltip">Kenapa tidak gratis? (harus nyawer)
+                          <span class="tooltiptext">Proses cleansing hasil OCR menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
+                        </div>
+                        """, unsafe_allow_html=True)
+                    url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
+                
+                    if url and check_word_in_url(url)==False:
+                        st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
+                        
+                    if check_word_in_url(url):
+                        st.session_state.title = title
+                        prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
+                                    dengan format:
+                                    
+                                    Bab I: Pendahuluan
+                                    
+                                    Bab II: Tinjauan Pustaka dan Kerangka Teori
+                                    
+                                    Bab III: Metodologi Penelitian
+                                    
+                                    Bab IV: Modeling dan Pembahasan
+                                    
+                                    Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                                    Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                                    Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
+                                    """
+                        
+                        # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
+                        with st.spinner('Generating content...'):
+                            simple_thesis = request_content(prompt_2)
+                            
+                            # Menampilkan skripsi sederhana
+                            st.subheader(title)
+                            st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
