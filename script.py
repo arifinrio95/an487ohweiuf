@@ -117,7 +117,7 @@ def main():
     
     # User meng-input free text topik khusus
     special_topic = st.text_input("Masukkan Topik Khusus")
-
+    
 
     button = st.button("Submit", key='btn_submit')
     # if button:
@@ -131,7 +131,7 @@ def main():
             # Menampilkan setiap judul sebagai text yang bisa diklik   
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             
-            if st.session_state.titles != titles:
+            if st.session_state.special_topic != special_topic:
                 with st.spinner('Generating title ideas...'):
                     titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                     st.session_state.titles = titles
@@ -233,7 +233,8 @@ def main():
                   <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
                 </div>
                 """, unsafe_allow_html=True)
-            
+        
+        st.session_state.special_topic = special_topic    
         
                     
                     
