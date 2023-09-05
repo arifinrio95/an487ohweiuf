@@ -146,6 +146,9 @@ def main():
                     st.button(title, key=f'btn_submit_{title}')
                     st.session_state.button2_clicked = True
                     st.session_state.title = title
+                    if 'url' not in st.session_state:
+                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                        st.session_state.url = url
 
                 # if st.button(title):
                 if 'button2_clicked' in st.session_state:
@@ -190,9 +193,7 @@ def main():
                         </div>
                         """, unsafe_allow_html=True)
                     
-                    if 'url' not in st.session_state:
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                        st.session_state.url = url
+                    
                     
                     if check_word_in_url(st.session_state.url ) == True:
                         # st.session_state.title = title
@@ -223,8 +224,8 @@ def main():
                         
                     if check_word_in_url(st.session_state.url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                        st.session_state.url = url
+                        # url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                        # st.session_state.url = url
                 
             
         
