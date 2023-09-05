@@ -116,6 +116,7 @@ def main():
                                 
                                 Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
                                 Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                                Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                                 """
                     
                     # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
