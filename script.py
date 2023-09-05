@@ -162,20 +162,20 @@ def main():
                         # st.button(title, key=f'btn_submit_{title}')
                         st.session_state.button2_clicked = True
                         st.session_state.title = title
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                        st.session_state.url = url
 
                         # url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                         # st.session_state.url = url
                         # if st.button("Submit", key = "button_url"):
                         #     st.experimental_rerun()
-                if 'title' in st.session_state:
-                    url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                    st.session_state.url = url
+                url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                st.session_state.url = url
+                # if 'title' in st.session_state:
+                #     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                #     st.session_state.url = url
         
-        if 'button2_clicked' in st.session_state:
-            url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-            st.session_state.url = url
+        # if 'button2_clicked' in st.session_state:
+        #     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+        #     st.session_state.url = url
 
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
