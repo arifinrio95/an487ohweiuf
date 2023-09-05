@@ -199,6 +199,8 @@ def main():
             if 'url' not in st.session_state:
                 url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                 st.session_state.url = url
+                if st.button_url:
+                    st.experimental_rerun()
                 
             # st.session_state.title = title
             st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
@@ -240,6 +242,7 @@ def main():
                   <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
                 </div>
                 """, unsafe_allow_html=True)
+            
         
         st.session_state.special_topic = special_topic    
         
