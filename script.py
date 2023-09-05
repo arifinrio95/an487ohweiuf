@@ -133,7 +133,7 @@ def main():
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
 
-        if 'titles' in st.session_state and 'title' not in st.session_state:
+        if 'titles' in st.session_state:
             # Menampilkan setiap judul sebagai text yang bisa diklik
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             for title in st.session_state.titles:
