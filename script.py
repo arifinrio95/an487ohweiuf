@@ -52,10 +52,10 @@ def request_content(prompt):
     }]
 
     response = openai.ChatCompletion.create(
-        # model="gpt-4",
-        model="gpt-3.5-turbo-16k",
+        model="gpt-4",
+        # model="gpt-3.5-turbo-16k",
         messages=messages,
-        max_tokens=15000,
+        max_tokens=3000,
         temperature=0)
     script = response.choices[0].message['content']
     return script
