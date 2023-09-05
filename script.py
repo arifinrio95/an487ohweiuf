@@ -5,6 +5,12 @@ import re
 
 openai.api_key = st.secrets['api_key']
 
+def local_css(file_name):
+    with open(file_name) as f:
+        st.markdown(f"<style>{f.read()}</style>", unsafe_allow_html=True)
+
+local_css("style.css")
+
 def extract_titles(text):
     # Menggunakan regex untuk menemukan semua judul yang diawali oleh angka dan titik
     matches = re.findall(r'\d+\.\s*(.*)', text)
@@ -97,7 +103,7 @@ def main():
                             
                             Bab IV: Modeling dan Pembahasan
                             
-                            Untuk Bab IV, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                            Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
                             Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
                             Tulis selengkap mungkin Bab IV. 
                             """
