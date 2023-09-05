@@ -189,8 +189,11 @@ def main():
                           <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
                         </div>
                         """, unsafe_allow_html=True)
-                    url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
-                    st.session_state.url = url
+                    
+                    if 'url' not in st.session_state:
+                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
+                        st.session_state.url = url
+                    
                     if check_word_in_url(st.session_state.url ) == True:
                         # st.session_state.title = title
                         prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
@@ -209,18 +212,21 @@ def main():
                                     Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                                     """
                         st.session_state.prompt2 = prompt_2
+                        if 'title' in st.session_state and 'prompt2' in st.session_state:            
+                            # Request ke API ChatGPT
+                            with st.spinner('Generating content...'):
+                                simple_thesis = request_content(st.session_state.prompt2)
+                                
+                                # Menampilkan skripsi sederhana
+                                st.subheader(st.session_state.title)
+                                st.write(str(simple_thesis)) 
                         
                     if check_word_in_url(st.session_state.url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
+                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
+                        st.session_state.url = url
                 
-            if 'title' in st.session_state and 'prompt2' in st.session_state:            
-                # Request ke API ChatGPT
-                with st.spinner('Generating content...'):
-                    simple_thesis = request_content(st.session_state.prompt2)
-                    
-                    # Menampilkan skripsi sederhana
-                    st.subheader(st.session_state.title)
-                    st.write(str(simple_thesis)) 
+            
         
                 
 if __name__ == "__main__":
