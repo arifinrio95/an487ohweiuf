@@ -49,7 +49,7 @@ def request_content(prompt):
         model="gpt-4",
         # model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=12000,
+        max_tokens=10000,
         temperature=0)
     script = response.choices[0].message['content']
     return script
