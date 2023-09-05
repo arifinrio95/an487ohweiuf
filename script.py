@@ -92,38 +92,39 @@ def main():
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
 
-        # Menampilkan setiap judul sebagai text yang bisa diklik
-        st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-        for title in titles:
-            # button2 = st.button(title, key=f'btn_submit_{title}')
-            # if button2:
-            #     st.session_state.button2_clicked = True
-                
-            if st.button(title):
-            # if 'button2_clicked' in st.session_state:
-                st.session_state.title = title
-                prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
-                            dengan format:
-                            
-                            Bab I: Pendahuluan
-                            
-                            Bab II: Tinjauan Pustaka dan Kerangka Teori
-                            
-                            Bab III: Metodologi Penelitian
-                            
-                            Bab IV: Modeling dan Pembahasan
-                            
-                            Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
-                            Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
-                            """
-                
-                # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
-                with st.spinner('Generating content...'):
-                    simple_thesis = request_content(prompt_2)
+        else:
+            # Menampilkan setiap judul sebagai text yang bisa diklik
+            st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
+            for title in titles:
+                # button2 = st.button(title, key=f'btn_submit_{title}')
+                # if button2:
+                #     st.session_state.button2_clicked = True
                     
-                    # Menampilkan skripsi sederhana
-                    st.subheader(title)
-                    st.write(str(simple_thesis))
+                if st.button(title):
+                # if 'button2_clicked' in st.session_state:
+                    st.session_state.title = title
+                    prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
+                                dengan format:
+                                
+                                Bab I: Pendahuluan
+                                
+                                Bab II: Tinjauan Pustaka dan Kerangka Teori
+                                
+                                Bab III: Metodologi Penelitian
+                                
+                                Bab IV: Modeling dan Pembahasan
+                                
+                                Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                                Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                                """
+                    
+                    # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
+                    with st.spinner('Generating content...'):
+                        simple_thesis = request_content(prompt_2)
+                        
+                        # Menampilkan skripsi sederhana
+                        st.subheader(title)
+                        st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
