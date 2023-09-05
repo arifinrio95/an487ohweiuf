@@ -46,8 +46,8 @@ def request_content(prompt):
     }]
 
     response = openai.ChatCompletion.create(
-        # model="gpt-4",
-        model="gpt-3.5-turbo",
+        model="gpt-4",
+        # model="gpt-3.5-turbo",
         messages=messages,
         max_tokens=3000,
         temperature=0)
