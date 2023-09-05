@@ -105,7 +105,7 @@ def main():
                 
                 # Menampilkan skripsi sederhana
                 st.subheader(title)
-                st.text(simple_thesis)
+                st.text(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
