@@ -70,8 +70,10 @@ def main():
     
     # User meng-input free text topik khusus
     special_topic = st.text_input("Masukkan Topik Khusus")
+
     
-    if ml_model and special_topic:
+    
+    if st.button("Submit") and ml_model and special_topic:
         prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
         
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
@@ -92,14 +94,15 @@ def main():
                             
                             Bab IV: Hasil dan Pembahasan
                             
-                            Gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis."""
+                            Gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis.
+                            Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab."""
                 
                 # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
                 simple_thesis = request_content(prompt_2)
                 
                 # Menampilkan skripsi sederhana
-                st.title(title)
-                st.text_area(simple_thesis)
+                st.subheader(title)
+                st.text(simple_thesis)
                 
 if __name__ == "__main__":
     main()
