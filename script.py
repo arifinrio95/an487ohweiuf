@@ -17,7 +17,7 @@ def request_title(prompt,
         "role":
         "system",
         "content":
-        f"Aku akan memberikan 50 ide judul skripsi tentang {ml_model} dengan fokus ke {special_topic}."
+        f"Aku akan memberikan 10 ide judul skripsi tentang {ml_model} dengan fokus ke {special_topic}."
     }, {
         "role":
         "user",
@@ -72,7 +72,7 @@ def main():
     special_topic = st.text_input("Masukkan Topik Khusus")
     
     if ml_model and special_topic:
-        prompt_1 = f"Berikan 50 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 50 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
+        prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
         
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
         # titles = simulated_chatGPT_request(prompt_1)
