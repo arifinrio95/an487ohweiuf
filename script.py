@@ -95,10 +95,12 @@ def main():
                             
                             Bab III: Metodologi Penelitian
                             
-                            Bab IV: Hasil dan Pembahasan
+                            Bab IV: Modeling dan Pembahasan
                             
-                            Gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis.
-                            Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab."""
+                            Untuk Bab IV, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                            Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                            Tulis selengkap mungkin Bab IV. 
+                            """
                 
                 # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
                 simple_thesis = request_content(prompt_2)
