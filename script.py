@@ -222,24 +222,41 @@ def main():
                 #         # st.button(title, key=f'btn_submit_{title}')
                 #         st.session_state.button2_clicked = True
                 #         st.session_state.title = title
-                        
-                prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
-                            dengan format:
-                            
-                            Bab I: Pendahuluan
-                            
-                            Bab II: Tinjauan Pustaka dan Kerangka Teori
-                            
-                            Bab III: Metodologi Penelitian
-                            
-                            Bab IV: Modeling dan Pembahasan
-                            
-                            Tuliskan semua bab diatas, untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
-                            Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
-                            Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
-                            """
-                st.session_state.prompt2 = prompt_2
+                # if 'title' in st.session_state:
+                #     prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
+                #                 dengan format:
+                                
+                #                 Bab I: Pendahuluan
+                                
+                #                 Bab II: Tinjauan Pustaka dan Kerangka Teori
+                                
+                #                 Bab III: Metodologi Penelitian
+                                
+                #                 Bab IV: Modeling dan Pembahasan
+                                
+                #                 Tuliskan semua bab diatas, untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                #                 Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                #                 Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
+                #                 """
+                #     st.session_state.prompt2 = prompt_2
                 if 'title' in st.session_state and 'prompt2' in st.session_state:
+                    prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
+                                dengan format:
+                                
+                                Bab I: Pendahuluan
+                                
+                                Bab II: Tinjauan Pustaka dan Kerangka Teori
+                                
+                                Bab III: Metodologi Penelitian
+                                
+                                Bab IV: Modeling dan Pembahasan
+                                
+                                Tuliskan semua bab diatas, untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                                Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
+                                Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
+                                """
+                    st.session_state.prompt2 = prompt_2
+                    
                     if 'titles' in st.session_state:
                         # Menampilkan setiap judul sebagai text yang bisa diklik   
                         # st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
