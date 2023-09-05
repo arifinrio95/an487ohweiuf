@@ -49,7 +49,7 @@ def request_content(prompt):
         model="gpt-4",
         # model="gpt-3.5-turbo",
         messages=messages,
-        max_tokens=3000,
+        max_tokens=12000,
         temperature=0)
     script = response.choices[0].message['content']
     return script
@@ -105,7 +105,7 @@ def main():
                 
                 # Menampilkan skripsi sederhana
                 st.subheader(title)
-                st.text(str(simple_thesis))
+                st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
