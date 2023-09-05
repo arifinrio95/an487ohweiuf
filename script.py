@@ -117,8 +117,9 @@ def main():
     # User meng-input free text topik khusus
     special_topic = st.text_input("Masukkan Topik Khusus")
 
-    if 'button_clicked' not in st.session_state:
-        button = st.button("Submit", key='btn_submit')
+
+    button = st.button("Submit", key='btn_submit')
+    if button:
         st.session_state.button_clicked = True
         
     if 'button_clicked' in st.session_state and ml_model and special_topic:
