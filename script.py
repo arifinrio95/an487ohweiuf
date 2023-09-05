@@ -131,66 +131,7 @@ def main():
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
 
-        if 'titles' in st.session_state:
-            # Menampilkan setiap judul sebagai text yang bisa diklik
-            
-                    
-            st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-            for title in st.session_state.titles:
-                # button2 = st.button(title, key=f'btn_submit_{title}')
-                if 'button2_clicked' not in st.session_state:
-                    st.button(title, key=f'btn_submit_{title}')
-                    st.session_state.button2_clicked = True
-                    st.session_state.title = title
-                    if 'url' not in st.session_state:
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                        st.session_state.url = url
-
-                # if st.button(title):
-                if 'button2_clicked' in st.session_state:
-                    # st.session_state.title = title
-                    st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
-                    st.markdown("""
-                        <style>
-                        .tooltip {
-                          position: relative;
-                          display: inline-block;
-                          cursor: pointer;
-                          background-color: #f2f2f2; /* Warna abu-abu */
-                          padding: 5px;
-                          border-radius: 6px;
-                        }
-                        
-                        .tooltip .tooltiptext {
-                          visibility: hidden;
-                          width: 300px;
-                          background-color: #555;
-                          color: #fff;
-                          text-align: center;
-                          border-radius: 6px;
-                          padding: 5px;
-                          position: absolute;
-                          z-index: 1;
-                          bottom: 125%; 
-                          left: 50%;
-                          margin-left: -150px;
-                          opacity: 0;
-                          transition: opacity 0.3s;
-                        }
-                        
-                        .tooltip:hover .tooltiptext {
-                          visibility: visible;
-                          opacity: 1;
-                        }
-                        </style>
-                        
-                        <div class="tooltip">Kenapa tidak gratis? (harus nyawer)
-                          <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
-                        </div>
-                        """, unsafe_allow_html=True)
-                    
-                    
-                    
+        if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
                 # st.session_state.title = title
                 prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
@@ -217,11 +158,74 @@ def main():
                         # Menampilkan skripsi sederhana
                         st.subheader(st.session_state.title)
                         st.write(str(simple_thesis)) 
+
+            if 'url' in st.session_state and check_word_in_url(st.session_state.url)==False:
+                st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
+
+            
+        # if st.button(title):
+        if 'button2_clicked' in st.session_state:
+            if 'url' not in st.session_state:
+                url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                st.session_state.url = url
+                
+            # st.session_state.title = title
+            st.markdown(f"[Sawer seikhlasnya dengan mengeklik link ini.]({'https://saweria.co/DatasansBook'})")
+            st.markdown("""
+                <style>
+                .tooltip {
+                  position: relative;
+                  display: inline-block;
+                  cursor: pointer;
+                  background-color: #f2f2f2; /* Warna abu-abu */
+                  padding: 5px;
+                  border-radius: 6px;
+                }
+                
+                .tooltip .tooltiptext {
+                  visibility: hidden;
+                  width: 300px;
+                  background-color: #555;
+                  color: #fff;
+                  text-align: center;
+                  border-radius: 6px;
+                  padding: 5px;
+                  position: absolute;
+                  z-index: 1;
+                  bottom: 125%; 
+                  left: 50%;
+                  margin-left: -150px;
+                  opacity: 0;
+                  transition: opacity 0.3s;
+                }
+                
+                .tooltip:hover .tooltiptext {
+                  visibility: visible;
+                  opacity: 1;
+                }
+                </style>
+                
+                <div class="tooltip">Kenapa tidak gratis? (harus nyawer)
+                  <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
+                </div>
+                """, unsafe_allow_html=True)
+            
+        if 'titles' in st.session_state:
+            # Menampilkan setiap judul sebagai text yang bisa diklik   
+            st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
+            for title in st.session_state.titles:
+                # button2 = st.button(title, key=f'btn_submit_{title}')
+                if 'button2_clicked' not in st.session_state:
+                    st.button(title, key=f'btn_submit_{title}')
+                    st.session_state.button2_clicked = True
+                    st.session_state.title = title
                     
-                if 'url' in st.session_state and check_word_in_url(st.session_state.url)==False:
-                    st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
-                    # url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
-                    # st.session_state.url = url
+                    
+                    
+            
+                
+                    
+                
                 
             
         
