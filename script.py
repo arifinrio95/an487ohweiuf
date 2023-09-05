@@ -120,6 +120,7 @@ def main():
     button = st.button("Submit", key='btn_submit')
     if button:
         st.session_state.button_clicked = True
+        st.experimental_rerun()
 
     if 'button_clicked' in st.session_state and ml_model and special_topic:
         prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
