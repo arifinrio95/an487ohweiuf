@@ -133,8 +133,8 @@ def main():
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
                 if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
+                    st.session_state.button_submit2 = True
                     if st.button("Submit"):
-                        st.session_state.button_submit2 = True
                         with st.spinner('Generating title ideas...'):
                             titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                             st.session_state.titles = titles
