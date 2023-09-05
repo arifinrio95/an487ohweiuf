@@ -74,7 +74,7 @@ def main():
         
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
         # titles = simulated_chatGPT_request(prompt_1)
-        titles = extract_titles(request_title(prompt_1))
+        titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
         
         # Menampilkan setiap judul sebagai text yang bisa diklik
         for title in titles:
