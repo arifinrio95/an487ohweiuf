@@ -59,7 +59,7 @@ def extract_titles(text):
 
 def request_title(prompt,
                  ml_model,
-                 special_topic):
+                 special_topic=''):
     messages = [{
         "role":
         "system",
