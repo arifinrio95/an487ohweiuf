@@ -274,6 +274,7 @@ def main():
                 st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                 url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput2')
                 st.session_state.url = url
+                st.button("Submit", key = 'btn_submiturl')
             
         # if st.button(title):
         # if 'button2_clicked' in st.session_state:
