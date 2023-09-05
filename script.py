@@ -95,7 +95,7 @@ def main():
         else:
             # Menampilkan setiap judul sebagai text yang bisa diklik
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-            for title in titles:
+            for title in st.session_state.titles:
                 # button2 = st.button(title, key=f'btn_submit_{title}')
                 # if button2:
                 #     st.session_state.button2_clicked = True
