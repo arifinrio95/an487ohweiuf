@@ -177,7 +177,7 @@ def main():
                         </style>
                         
                         <div class="tooltip">Kenapa tidak gratis? (harus nyawer)
-                          <span class="tooltiptext">Proses cleansing hasil OCR menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
+                          <span class="tooltiptext">Proses generate content menggunakan API ChatGPT yang aksesnya berbayar. Sawer seikhlasnya untuk melanjutkan. Link berlaku selama 1 jam setelah sawer berhasil.</span>
                         </div>
                         """, unsafe_allow_html=True)
                     url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
