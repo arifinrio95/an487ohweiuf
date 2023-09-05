@@ -165,6 +165,7 @@ def main():
 
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
+                st.success("URL diterima.")
                 # st.session_state.title = title
                 prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                             dengan format:
