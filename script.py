@@ -191,7 +191,7 @@ def main():
                         """, unsafe_allow_html=True)
                     
                     if 'url' not in st.session_state:
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
+                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                         st.session_state.url = url
                     
                     if check_word_in_url(st.session_state.url ) == True:
@@ -223,7 +223,7 @@ def main():
                         
                     if check_word_in_url(st.session_state.url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
-                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'")
+                        url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                         st.session_state.url = url
                 
             
