@@ -218,7 +218,7 @@ def main():
                                 st.subheader(st.session_state.title)
                                 st.write(str(simple_thesis)) 
                         
-                    if 'url' in st.session_state check_word_in_url(st.session_state.url)==False:
+                    if 'url' in st.session_state and check_word_in_url(st.session_state.url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
                         # url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
                         # st.session_state.url = url
