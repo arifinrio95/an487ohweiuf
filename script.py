@@ -214,12 +214,12 @@ def main():
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
                 st.success("URL diterima.")
-                for title in st.session_state.titles:
-                    button2 = st.button(title, key=f'btn_submit_{title}')
-                    if button2:
-                        # st.button(title, key=f'btn_submit_{title}')
-                        st.session_state.button2_clicked = True
-                        st.session_state.title = title
+                # for title in st.session_state.titles:
+                #     button2 = st.button(title, key=f'btn_submit_{title}')
+                #     if button2:
+                #         # st.button(title, key=f'btn_submit_{title}')
+                #         st.session_state.button2_clicked = True
+                #         st.session_state.title = title
                         
                         prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                                     dengan format:
@@ -254,13 +254,13 @@ def main():
                                                 st.button(title, key=f'btn_submit_{title}')
                                                 st.session_state.button2_clicked = True
                                                 st.session_state.title = title
-                            # else:
-                            #     for title in st.session_state.titles:
-                            #         button2 = st.button(title, key=f'btn_submit2_{title}')
-                            #         if button2:
-                            #             # st.button(title, key=f'btn_submit_{title}')
-                            #             st.session_state.button2_clicked = True
-                            #             st.session_state.title = title
+                            else:
+                                 for title in st.session_state.titles:
+                                    button2 = st.button(title, key=f'btn_submit_{title}')
+                                    if button2:
+                                        # st.button(title, key=f'btn_submit_{title}')
+                                        st.session_state.button2_clicked = True
+                                        st.session_state.title = title
                         # Request ke API ChatGPT
                         with st.spinner('Generating content...'):
                             simple_thesis = request_content(st.session_state.prompt2)
