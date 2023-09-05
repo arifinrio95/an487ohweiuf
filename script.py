@@ -131,7 +131,7 @@ def main():
             # Menampilkan setiap judul sebagai text yang bisa diklik   
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             
-            if st.session_state.title != title:
+            if st.session_state.titles != titles:
                 with st.spinner('Generating title ideas...'):
                     titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                     st.session_state.titles = titles
@@ -153,12 +153,6 @@ def main():
             with st.spinner('Generating title ideas...'):
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
-
-        if 'titles' in st.session_state:
-            if st.session_state.title != title:
-                with st.spinner('Generating title ideas...'):
-                    titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
-                    st.session_state.titles = titles
 
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
