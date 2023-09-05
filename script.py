@@ -109,12 +109,12 @@ def main():
                             """
                 
                 # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
-                simple_thesis = request_content(prompt_2)
-                
-                # Menampilkan skripsi sederhana
-                st.subheader(title)
-                st.write(str(simple_thesis))
-                st.session_state.button_clicked = False
+                with st.spinner('Wait for it...'):
+                    simple_thesis = request_content(prompt_2)
+                    
+                    # Menampilkan skripsi sederhana
+                    st.subheader(title)
+                    st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
