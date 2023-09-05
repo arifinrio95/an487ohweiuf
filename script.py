@@ -133,7 +133,7 @@ def main():
                 titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                 st.session_state.titles = titles
 
-        else:
+        if 'titles' in st.session_state and 'title' not in st.session_state:
             # Menampilkan setiap judul sebagai text yang bisa diklik
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             for title in st.session_state.titles:
@@ -203,17 +203,17 @@ def main():
                                     Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
                                     Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                                     """
-                        
-                        # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
-                        with st.spinner('Generating content...'):
-                            simple_thesis = request_content(prompt_2)
-                            
-                            # Menampilkan skripsi sederhana
-                            st.subheader(st.session_state.title)
-                            st.write(str(simple_thesis))
-
                     if url and check_word_in_url(url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
+            
+        if 'title' in st.session_state:            
+            # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
+            with st.spinner('Generating content...'):
+                simple_thesis = request_content(prompt_2)
+                
+                # Menampilkan skripsi sederhana
+                st.subheader(st.session_state.title)
+                st.write(str(simple_thesis))
                 
 if __name__ == "__main__":
     main()
