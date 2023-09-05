@@ -79,7 +79,7 @@ def main():
         # Menampilkan setiap judul sebagai text yang bisa diklik
         for title in titles:
             if st.button(title):
-                prompt_2 = f"Tuliskan skripsi dengan judul : {title}
+                prompt_2 = f"""Tuliskan skripsi dengan judul : {title}
                             dengan format:
                             
                             Bab I: Pendahuluan
@@ -90,7 +90,7 @@ def main():
                             
                             Bab IV: Hasil dan Pembahasan
                             
-                            Gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis."
+                            Gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis."""
                 
                 # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
                 simple_thesis = request_content(prompt_2)
