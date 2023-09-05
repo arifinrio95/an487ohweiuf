@@ -120,8 +120,9 @@ def main():
     
 
     button = st.button("Submit", key='btn_submit')
-    if button:
-        st.session_state.button_clicked = True
+    if 'button_submit2' not in st.session_state:
+        if button:
+            st.session_state.button_clicked = True
         
     if 'button_clicked' in st.session_state and ml_model and special_topic:
     # if button and ml_model and special_topic:
@@ -133,6 +134,7 @@ def main():
             if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
                 if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
                     if st.button("Submit"):
+                        st.session_state.button_submit2 = True
                         with st.spinner('Generating title ideas...'):
                             titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                             st.session_state.titles = titles
