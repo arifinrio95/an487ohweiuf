@@ -204,17 +204,18 @@ def main():
                                     Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                                     """
                         st.session_state.prompt2 = prompt_2
+                        if 'title' in st.session_state and 'prompt2' in st.session_state:            
+                            # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
+                            with st.spinner('Generating content...'):
+                                simple_thesis = request_content(st.session_state.prompt2)
+                                
+                                # Menampilkan skripsi sederhana
+                                st.subheader(st.session_state.title)
+                                st.write(str(simple_thesis))
                     if url and check_word_in_url(url)==False:
                         st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
             
-        if 'title' in st.session_state and 'prompt2' in st.session_state:            
-            # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
-            with st.spinner('Generating content...'):
-                simple_thesis = request_content(st.session_state.prompt2)
-                
-                # Menampilkan skripsi sederhana
-                st.subheader(st.session_state.title)
-                st.write(str(simple_thesis))
+        
                 
 if __name__ == "__main__":
     main()
