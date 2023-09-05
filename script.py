@@ -42,7 +42,7 @@ def check_word_in_url(url, word="Berhasil"):
         return True
 
     except requests.RequestException as e:
-        st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses.")
+        # st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses.")
         return False
         
 
@@ -159,9 +159,10 @@ def main():
                         st.subheader(st.session_state.title)
                         st.write(str(simple_thesis)) 
 
-            if 'url' in st.session_state and check_word_in_url(st.session_state.url)==False:
+            if check_word_in_url(st.session_state.url)==False:
                 st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
-
+                url = st.text_input("Masukkan link bukti sawer untuk melanjutkan. Masukkan link lengkap mulai dari 'https://'", key=f'btn_textinput1')
+                st.session_state.url = url
             
         # if st.button(title):
         if 'button2_clicked' in st.session_state:
@@ -214,8 +215,8 @@ def main():
             # Menampilkan setiap judul sebagai text yang bisa diklik   
             st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
             for title in st.session_state.titles:
-                # button2 = st.button(title, key=f'btn_submit_{title}')
-                if 'button2_clicked' not in st.session_state:
+                button2 = st.button(title, key=f'btn_submit_{title}')
+                if button2:
                     st.button(title, key=f'btn_submit_{title}')
                     st.session_state.button2_clicked = True
                     st.session_state.title = title
