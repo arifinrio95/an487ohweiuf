@@ -64,16 +64,20 @@ def request_content(prompt):
 # Streamlit app
 def main():
     st.title("Generator Skripsi Machine Learning by Datasans")
+
     
+            
     # User memilih satu jenis model machine learning
     ml_model = st.selectbox("Pilih Jenis Model Machine Learning", ["Klasifikasi", "Regresi", "Clustering"])
     
     # User meng-input free text topik khusus
     special_topic = st.text_input("Masukkan Topik Khusus")
+    
+    button = st.button("Submit", key='btn_submit')
+    if button:
+        st.session_state.button_clicked = True
 
-    
-    
-    if st.button("Submit") and ml_model and special_topic:
+    if st.session_state.button_clicked and ml_model and special_topic:
         prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
         
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
