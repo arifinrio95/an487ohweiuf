@@ -178,7 +178,7 @@ def main():
                             
                             Bab IV: Modeling dan Pembahasan
                             
-                            Untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                            Tuliskan semua bab diatas, untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
                             Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
                             Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
                             """
@@ -207,14 +207,14 @@ def main():
                                         # st.button(title, key=f'btn_submit_{title}')
                                         st.session_state.button2_clicked = True
                                         st.session_state.title = title
-                    # Request ke API ChatGPT
-                    with st.spinner('Generating content...'):
-                        simple_thesis = request_content(st.session_state.prompt2)
-                        
-                        # Menampilkan skripsi sederhana
-                        st.subheader(st.session_state.title)
-                        st.write(str(simple_thesis)) 
-                        # st.experimental_rerun()
+                        # Request ke API ChatGPT
+                        with st.spinner('Generating content...'):
+                            simple_thesis = request_content(st.session_state.prompt2)
+                            
+                            # Menampilkan skripsi sederhana
+                            st.subheader(st.session_state.title)
+                            st.write(str(simple_thesis)) 
+                            # st.experimental_rerun()
 
             if check_word_in_url(st.session_state.url)==False:
                 st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
