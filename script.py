@@ -86,10 +86,12 @@ def main():
         
         # Request ke API ChatGPT (dalam hal ini, kita gunakan fungsi simulasi)
         # titles = simulated_chatGPT_request(prompt_1)
-        
-        with st.spinner('Generating title ideas...'):
-            titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
-        
+
+        if 'titles' not in st.session_state:
+            with st.spinner('Generating title ideas...'):
+                titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
+                st.session_state.titles = titles
+
         # Menampilkan setiap judul sebagai text yang bisa diklik
         st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
         for title in titles:
