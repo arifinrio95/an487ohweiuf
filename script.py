@@ -190,7 +190,7 @@ def main():
                         if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
                             if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
                                 st.session_state.button_submit2 = True
-                                if st.button("Submit", key = 'btn_resubmit'):
+                                if st.button("Submit", key = 'btn_resubmit2'):
                                     with st.spinner('Generating title ideas...'):
                                         titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
                                         st.session_state.titles = titles
