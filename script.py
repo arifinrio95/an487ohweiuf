@@ -120,16 +120,17 @@ def main():
 
 
     button = st.button("Submit", key='btn_submit')
-    if button:
-        st.session_state.button_clicked = True
+    # if button:
+    #     st.session_state.button_clicked = True
         
-    if 'button_clicked' in st.session_state and ml_model and special_topic:
+    # if 'button_clicked' in st.session_state and ml_model and special_topic:
+    if button and ml_model and special_topic:
         prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, fokus pada {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
 
-        if 'titles' not in st.session_state:
-            with st.spinner('Generating title ideas...'):
-                titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
-                st.session_state.titles = titles
+        # if 'titles' not in st.session_state:
+        with st.spinner('Generating title ideas...'):
+            titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
+            st.session_state.titles = titles
 
         if 'url' in st.session_state:
             if check_word_in_url(st.session_state.url) == True:
