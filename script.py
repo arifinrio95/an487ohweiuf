@@ -93,10 +93,10 @@ def request_content(prompt):
     }]
 
     response = openai.ChatCompletion.create(
-        # model="gpt-4",
-        model="gpt-3.5-turbo-16k",
+        model="gpt-4",
+        # model="gpt-3.5-turbo-16k",
         messages=messages,
-        max_tokens=13000,
+        max_tokens=6000,
         temperature=0)
     script = response.choices[0].message['content']
     return script
@@ -257,9 +257,9 @@ def main():
                         
                         Bab IV: Modeling dan Pembahasan
                         
-                        Tuliskan semua bab diatas, untuk Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                        Tuliskan Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
                         Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
-                        Untuk Bab IV, buatkan script python lengkap dengan data sintetis.
+                        Untuk Bab IV, buatkan script python lengkap dengan data sintetis sepanjang 100 lines.
                         """
             st.session_state.prompt2 = prompt_2
             
