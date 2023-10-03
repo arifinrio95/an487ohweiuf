@@ -247,19 +247,11 @@ def main():
         #     st.session_state.prompt2 = prompt_2
         if 'title' in st.session_state:
             prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
-                        dengan format:
-                        
-                        Bab I: Pendahuluan
-                        
-                        Bab II: Tinjauan Pustaka dan Kerangka Teori
-                        
-                        Bab III: Metodologi Penelitian
-                        
-                        Bab IV: Modeling dan Pembahasan
-                        
-                        Tuliskan Bab IV, buatkan script python lengkap, gunakan dataset yang relevan dari library yang ada atau gunakan data sintetis, dan tulis selengkap mungkin.
+                        untuk "Bab IV: Modeling dan Pembahasan".
+                        Tuliskan Bab IV, buatkan script python lengkap, gunakan data sintetis, dan tulis selengkap mungkin.
                         Gunakan format paragraf, ## untuk mengawali bab, ### untuk mengawali subbab.
-                        Untuk Bab IV, buatkan script python lengkap dengan data sintetis sepanjang 100 lines.
+                        Untuk Bab IV, buatkan script python lengkap dengan data sintetis sepanjang 200 lines.
+                        Generate fitur-fitur sintetis yang relevan dan sesuai dengan judulnya.
                         """
             st.session_state.prompt2 = prompt_2
             
