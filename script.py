@@ -263,37 +263,37 @@ def main():
                         """
             st.session_state.prompt2 = prompt_2
             
-            if 'titles' in st.session_state:
-                # Menampilkan setiap judul sebagai text yang bisa diklik   
-                # st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
-                if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
-                    if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
-                        st.session_state.button_submit2 = True
-                        if st.button("Submit", key = 'btn_resubmit2'):
-                            with st.spinner('Generating title ideas...'):
-                                titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
-                                st.session_state.titles = titles
-                                for i, title in enumerate(st.session_state.titles):
-                                    button2 = st.button(title, key=f'btn_submit_{title}_{i}')
-                                    if button2:
-                                        st.button(title, key=f'btn_submit_{title}')
-                                        st.session_state.button2_clicked = True
-                                        st.session_state.title = title
-                    else:
-                         for i, title in enumerate(st.session_state.titles):
-                            button2 = st.button(title, key=f'btn_submit_{title}_{i}')
-                            if button2:
-                                # st.button(title, key=f'btn_submit_{title}')
-                                st.session_state.button2_clicked = True
-                                st.session_state.title = title
-                # Request ke API ChatGPT
-                with st.spinner('Generating content...'):
-                    simple_thesis = request_content(st.session_state.prompt2)
-                    
-                    # Menampilkan skripsi sederhana
-                    st.subheader(st.session_state.title)
-                    st.write(str(simple_thesis)) 
-                    # st.experimental_rerun()
+            # if 'titles' in st.session_state:
+            #     # Menampilkan setiap judul sebagai text yang bisa diklik   
+            #     # st.write("Klik pada judul untuk men-generate skripsi sederhana dari Bab 1-4.")
+            #     if ('special_topic' in st.session_state) and ('ml_model' in st.session_state): 
+            #         if (st.session_state.special_topic != special_topic) or (st.session_state.ml_model != ml_model):
+            #             st.session_state.button_submit2 = True
+            #             if st.button("Submit", key = 'btn_resubmit2'):
+            #                 with st.spinner('Generating title ideas...'):
+            #                     titles = extract_titles(request_title(prompt_1, ml_model, special_topic))
+            #                     st.session_state.titles = titles
+            #                     for i, title in enumerate(st.session_state.titles):
+            #                         button2 = st.button(title, key=f'btn_submit_{title}_{i}')
+            #                         if button2:
+            #                             st.button(title, key=f'btn_submit_{title}')
+            #                             st.session_state.button2_clicked = True
+            #                             st.session_state.title = title
+            #         else:
+            #              for i, title in enumerate(st.session_state.titles):
+            #                 button2 = st.button(title, key=f'btn_submit_{title}_{i}')
+            #                 if button2:
+            #                     # st.button(title, key=f'btn_submit_{title}')
+            #                     st.session_state.button2_clicked = True
+            #                     st.session_state.title = title
+            # Request ke API ChatGPT
+            with st.spinner('Generating content...'):
+                simple_thesis = request_content(st.session_state.prompt2)
+                
+                # Menampilkan skripsi sederhana
+                st.subheader(st.session_state.title)
+                st.write(str(simple_thesis)) 
+                # st.experimental_rerun()
 
             # if check_word_in_url(st.session_state.url)==False:
             #     st.error("Maaf link bukti pembayaran salah atau status pembayaran tidak sukses/valid.")
