@@ -124,8 +124,8 @@ def main():
         if button:
             st.session_state.button_clicked = True
         
-    # if 'button_clicked' in st.session_state and ml_model and special_topic:
-    if button and ml_model and special_topic:
+    if 'button_clicked' in st.session_state and ml_model and special_topic:
+    # if button and ml_model and special_topic:
         prompt_1 = f"Berikan 10 ide judul skripsi tentang {ml_model}, {special_topic}. Beri nomor 1 - 10 pada setiap judul. Jangan berikan kalimat pengantar atau apapun kecuali judul. Langsung mulai dengan '1. (judul no 1)"
 
         if 'titles' in st.session_state:
