@@ -222,12 +222,12 @@ def main():
                 # st.button(title, key=f'btn_submit_{title}')
                 st.session_state.button2_clicked = True
                 st.session_state.title = title
-        for title in st.session_state.titles:
-            button2 = st.button(title, key=f'btn_submit_{title}')
-            if button2:
-                # st.button(title, key=f'btn_submit_{title}')
-                st.session_state.button2_clicked = True
-                st.session_state.title = title
+        # for title in st.session_state.titles:
+        #     button2 = st.button(title, key=f'btn_submit_{title}')
+        #     if button2:
+        #         # st.button(title, key=f'btn_submit_{title}')
+        #         st.session_state.button2_clicked = True
+        #         st.session_state.title = title
         if 'title' in st.session_state:
             prompt_2 = f"""Tuliskan skripsi dengan judul : {st.session_state.title}
                         dengan format:
